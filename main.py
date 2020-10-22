@@ -1,13 +1,13 @@
 import time
 import random
 
-
+cards={14:'ace',2:'2',3:'3',4:'4',5:'5', 6:'6', 7:'7', 8:'8', 9:'9', 10:'10', 11:"prince" ,12:'queen', 13:'king', 15:'joker'}
 name=input("whats your name? ")
 print("hello "+name+" were gonna play battle!")
 deckSize=int(input("how many cards do you want to have in your deck?  "))
 deck=[]
 for i in range (deckSize):
-        deck.append(random.randrange(1, 14, 1))
+        deck.append(random.randrange(2, 15, 1))
 print("your deck is set")
 
 class Battle:
@@ -18,13 +18,13 @@ class Battle:
         self.side = []
     def start(self):
         for i in range(len(self.deck)):
-            self.enemyDeck.append(random.randrange(1,14,10))
+            self.enemyDeck.append(random.randrange(2,15,1))
         print(self.deck,self.enemyDeck)
         while len(self.deck)>0 and len(self.enemyDeck)>0:
             myNum=self.deck.pop(0)
             self.enemyNum=self.enemyDeck.pop(0)
-            print(self.name+"'s number:", myNum)
-            print("computer's number:", self.enemyNum)
+            print(self.name+"'s number:", cards[myNum])
+            print("computer's number:", cards[self.enemyNum])
             if myNum>self.enemyNum:
                 print(self.name+" wins")
                 self.deck.append(myNum)
