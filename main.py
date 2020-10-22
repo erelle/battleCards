@@ -1,9 +1,27 @@
 import time
 import random
+import tkinter as game
+
 
 cards={14:'ace',2:'2',3:'3',4:'4',5:'5', 6:'6', 7:'7', 8:'8', 9:'9', 10:'10', 11:"prince" ,12:'queen', 13:'king', 15:'joker'}
-name=input("whats your name? ")
-print("hello "+name+" were gonna play battle!")
+
+window = game.Tk()
+question= game.Label(text="what is your name?", bg="white", fg="black")
+question.pack()
+entry=game.Entry(bg="black", fg="white", width=10)
+entry.pack()
+name=entry.get()
+
+greeting = game.Label(text="Hello "+name+" were gonna play battle!",fg="white", bg="red", width=40, height=5)
+greeting.pack()
+b1=game.Button(text="ready", width=17, height=2, fg="black", bg="white")
+b1.pack()
+window.mainloop()
+
+
+
+
+
 deckSize=int(input("how many cards do you want to have in your deck?  "))
 deck=[]
 for i in range (deckSize):
