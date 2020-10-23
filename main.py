@@ -1,32 +1,56 @@
 import time
 import random
-import tkinter as game
+import tkinter as tk
 
 
-cards={14:'ace',2:'2',3:'3',4:'4',5:'5', 6:'6', 7:'7', 8:'8', 9:'9', 10:'10', 11:"prince" ,12:'queen', 13:'king', 15:'joker'}
+cards = {14: 'ace', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: '10', 11: "prince", 12: 'queen', 13: 'king', 15: 'joker'}
 
-window = game.Tk()
-question= game.Label(text="what is your name?", bg="white", fg="black")
-question.pack()
-entry=game.Entry(bg="black", fg="white", width=10)
-entry.pack()
-name=entry.get()
+window = tk.Tk()
+window.title("registration")
+qframe=tk.Frame(master=window)
+qframe.pack()
+bframe=tk.Frame(master=window)
+bframe.pack()
 
-greeting = game.Label(text="Hello "+name+" were gonna play battle!",fg="white", bg="red", width=40, height=5)
-greeting.pack()
-b1=game.Button(text="ready", width=17, height=2, fg="black", bg="white")
+question= tk.Label(master=qframe, text="what is your name?")
+question.grid(row=0, column=0, pady=5, sticky="w")
+entry=tk.Entry(master=qframe)
+entry.grid(row=0, column=1, padx=5, pady=5)
+question2= tk.Label(master=qframe, text="how many cards do you want in your deck?")
+entry2=tk.Entry(master=qframe)
+question2.grid(row=1, column=0, pady=5, sticky="w")
+entry2.grid(row=1, column=1, pady=5)
+
+
+def start():
+    window2 = tk.Tk()
+    window2.title("lets begin")
+
+    name = entry.get()
+    number = int(entry2.get())
+    greeting = tk.Label(master= window2, text="Hello " + name + " were gonna play battle!")
+    deck = []
+    for i in range(number):
+        deck.append(random.randrange(2, 15, 1))
+
+    window.destroy()
+
+    greeting.pack()
+
+
+b1 = tk.Button(master=bframe, command=start, text="ready", bg="black", fg="white", width=9, height=1)
 b1.pack()
+
+
+
+
 window.mainloop()
 
 
 
 
 
-deckSize=int(input("how many cards do you want to have in your deck?  "))
-deck=[]
-for i in range (deckSize):
-        deck.append(random.randrange(2, 15, 1))
-print("your deck is set")
+
 
 class Battle:
     def __init__(self,name, deck):
